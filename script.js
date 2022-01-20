@@ -1,0 +1,80 @@
+let myLibrary = [];
+
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+
+    // this.info = function() {
+    //     console.log( `${this.title} by ${this.author}, ${this.pages}, ${this.read} `)
+    // }
+}
+
+const habit = new Book("7Habit","asdf","23", "no");
+const book1 = new Book("sadfit","asdf","sdf", "no");
+myLibrary.push(habit)
+myLibrary.push(book1)
+
+const habit1 = new Book("7Habit","asdf","23", "no");
+const book11 = new Book("sadfit","asdf","sdf", "no");
+myLibrary.push(habit1)
+myLibrary.push(book11)
+
+
+// habit.info();
+function addBookLibrary() {
+    title= prompt("title")
+    author = prompt("author")
+    pages = prompt("pages")
+    read = prompt("read")
+
+    const newBook = new Book(title,author,pages,read)
+    myLibrary.push(newBook)
+}   
+
+// addBookLibrary()
+
+const table = document.getElementById("table");
+
+// myLibrary.forEach(function(items) {
+//     var row = document.createElement("tr");
+// //     items.forEach(function(item) {
+// //         var cell = document.createElement("td");
+// //         cell.textContent = item;
+// //         row.appendChild(cell);
+// //     });
+//     row.textContent = items.title
+//     tbody.appendChild(row);
+// })
+
+// for(let i = 0; i < propOwn.length; i++ ) {
+//     var row = document.createElement("tr");
+//     row.textContent = 
+//     tbody.appendChild(row);
+// }
+// myLibrary.forEach(function(items) {
+//     console.log(items)
+//     console.log(items.author)
+//     console.log(items.pages)
+//     console.log(items.read) 
+// });
+const propOwn = Object.getOwnPropertyNames(Book);
+for (var key in myLibrary) {
+    var bookContainer = document.createElement("div");
+    bookContainer.classList.add("bookContainer");
+    var list = document.createElement("ul");
+    bookContainer.appendChild(list)
+    var obj = myLibrary[key]
+    for (var item in obj) {
+        var listItem = document.createElement("li");
+        listItem.textContent = `${item}: ${obj[item]} `;
+        list.appendChild(listItem);
+        console.log(obj[item])
+    }
+    table.appendChild(bookContainer);
+}
+
+function addBook() {
+
+}

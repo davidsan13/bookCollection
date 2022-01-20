@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+#table {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    height: 500px;
+    width: 500px;
+    margin:0;
+    justify-items: center;
+    align-items: center;
+    
+}
+
+
+ul {
+    display:flex;
+    margin:0;
+    padding: 0;
+    list-style: none;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.bookContainer {
+    width: 150px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    border-style: solid;
+}
