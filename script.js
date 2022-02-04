@@ -21,7 +21,14 @@ const book11 = new Book("sadfit","asdf","sdf", "no");
 myLibrary.push(habit1)
 myLibrary.push(book11)
 
-
+const habit2 = new Book("7Habit","asdf","23", "no");
+const book2 = new Book("sadfit","asdf","sdf", "no");
+myLibrary.push(habit2)
+myLibrary.push(book2)
+const habit3 = new Book("7Habit","asdf","23", "no");
+const book3 = new Book("sadfit","asdf","sdf", "no");
+myLibrary.push(habit3)
+myLibrary.push(book3)
 // habit.info();
 function addBookLibrary() {
     title= prompt("title")
@@ -60,18 +67,39 @@ const table = document.getElementById("table");
 //     console.log(items.read) 
 // });
 const propOwn = Object.getOwnPropertyNames(Book);
+
 for (var key in myLibrary) {
     var bookContainer = document.createElement("div");
     bookContainer.classList.add("bookContainer");
     var list = document.createElement("ul");
+    var btnCon = document.createElement("div");
+    btnCon.classList.add("btnCon");
     bookContainer.appendChild(list)
+    bookContainer.appendChild(btnCon)
     var obj = myLibrary[key]
     for (var item in obj) {
         var listItem = document.createElement("li");
-        listItem.textContent = `${item}: ${obj[item]} `;
+       
+        
+        listItem.textContent = `${item[0].toUpperCase()}${item.slice(1)}: ${obj[item]} `;
         list.appendChild(listItem);
+        
         console.log(obj[item])
     }
+    for(let i = 0; i < 2; i++) {
+        var btn = document.createElement("button");
+        btn.classList.add("material-icons")
+        if(i === 0) {
+            btn.textContent = "edit" ;
+        }
+        else{
+            btn.textContent = "delete";
+        }
+        
+        btnCon.appendChild(btn)
+    }
+    
+
     table.appendChild(bookContainer);
 }
 
