@@ -25,7 +25,7 @@ const habit2 = new Book("7Habit","asdf","23", "no");
 const book2 = new Book("sadfit","asdf","sdf", "no");
 myLibrary.push(habit2)
 myLibrary.push(book2)
-const habit3 = new Book("7Habit","asdf","23", "no");
+const habit3 = new Book("7Hab ita sdfasdfasdfasdf","asdf","23", "no");
 const book3 = new Book("sadfit","asdf","sdf", "no");
 myLibrary.push(habit3)
 myLibrary.push(book3)

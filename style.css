@@ -2,15 +2,25 @@
     box-sizing: border-box;
 }
 body {
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items:center;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    gap: 95px;
     width: 100%;
     height: 100%;
 }
 html {
     height: 100%;
+}
+.column1 {
+    display:flex;
+    flex-direction:column;
+}
+.column2{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: 10px;
 }
 #table {
     display: grid;
@@ -20,6 +30,7 @@ html {
     margin:0;
     justify-items: center;
     align-items: center;
+    gap:30px;
     
 }
 nav {
@@ -31,9 +42,12 @@ li {
     color:#ffffff;
     font-family: roboto;
     weight: 300;
+    word-break: break-all;
 }
 
 ul {
+    height:auto;
+    width: 95px;
     display:flex;
     margin:0;
     padding: 0;
@@ -41,6 +55,7 @@ ul {
     flex-direction: column;
     justify-content: center;
     gap: 9px;
+    
     
 }
 .bookContainer {
@@ -68,4 +83,13 @@ ul {
     height: 35px;
     width:35px;
     box-shadow: 0 13px 26px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.16);
+
 }
+
+.btnCon > button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+
