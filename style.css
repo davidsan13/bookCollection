@@ -93,3 +93,37 @@ ul {
 }
 
 
+/* Styling for bookForm.html */
+
+form {
+    display:flex;
+    flex-direction: column;
+    width: 25%;
+   
+}
+
+.formContainer {
+    display:flex;
+    height:50%;
+    width: 50%;
+    border: solid;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer-modal {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    width: 500px;
+    height: 300px;
+    background-color: white;
+}

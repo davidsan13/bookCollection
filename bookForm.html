@@ -4,18 +4,29 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
         <title>Library</title>
+        <script type="modules" src="form.js" defer></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     </header>
     <body>
-        <form>
-            <label for="booktitle">Book Title:</label>
-            <input type="next" id="booktitle" name="booktitle">
-            <label for="author">Author:</label>
-            <input type="next" id="author" name="author">
-            <label for="pages">Number of Pages:</label>
-            <input type="next" id="pages" name="pages">
-            <label for="read">Have you read:</label>
-            <input type="next" id="read" name="read">
-    
-        </form>
+        <div class="formContainer">
+            <form id="bookForm">
+                <label for="booktitle">Book Title:</label>
+                <input type="text" id="booktitle" name="booktitle">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author">
+                <label for="pages">Number of Pages:</label>
+                <input type="number" id="pages" name="pages">
+                <div>
+                    <label for="Read">Have you read:</label>
+                    <input type="radio" id="Yes" name="Read" value="Yes">
+                    <label for="Yes">Yes</label>
+                    <input type="radio" id="No" name="Read" value="No">
+                    <label for="No">No</label>
+                </div>  
+                <input type="submit" value="Submit">
+
+            </form>
+        </div>  
     </body>
 </html>

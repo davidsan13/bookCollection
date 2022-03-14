@@ -16,14 +16,30 @@
             <button class="addButton">Add</button>
             <button class="addButton">Add</button>
             <button class="addButton" onclick="bookForm.html" type="button">Add</button>
-            <form action="bookForm.html">
-                <button type="submit"> Add Book</button>   
-            </form>
-
         </div>
         <div class="column2">
             <nav class="nav">Book Collection</nav>
             <div id = "table"></div>
+        </div>
+        <div class="formContainer-modal">
+            <div class="modal-content">
+                <form id="bookForm">
+                    <label for="booktitle">Book Title:</label>
+                    <input type="text" id="booktitle" name="booktitle">
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author">
+                    <label for="pages">Number of Pages:</label>
+                    <input type="number" id="pages" name="pages">
+                    <div>
+                        <label for="Read">Have you read:</label>
+                        <input type="radio" id="Yes" name="Read" value="Yes">
+                        <label for="Yes">Yes</label>
+                        <input type="radio" id="No" name="Read" value="No">
+                        <label for="No">No</label>
+                    </div>  
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
         </div>
     </body>
 </html>

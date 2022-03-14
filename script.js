@@ -96,7 +96,7 @@ for (var key in myLibrary) {
             btn.textContent = "delete";
         }
         
-        btnCon.appendChild(btn)
+        btnCon.appendChild(btn);
     }
     
 
@@ -106,3 +106,9 @@ for (var key in myLibrary) {
 function addBook() {
 
 }
+
+// Retrieve Form Data
+
+
+        
+
