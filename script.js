@@ -107,8 +107,14 @@ function addBook() {
 
 }
 
-// Retrieve Form Data
+// Modal 
 
+document.getElementById('bookBtn').addEventListener('click', function() {
+    document.querySelector('.formContainer-modal').style.display ='flex';
+})
+       
 
-        
+document.querySelector('.close').addEventListener('click', function() {
+    document.querySelector('.formContainer-modal').style.display ='none';
+})
 

@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="column1">
-            <button class="addButton">Add</button>
+            <button id="bookBtn">Add</button>
             <button class="addButton">Add</button>
             <button class="addButton">Add</button>
             <button class="addButton" onclick="bookForm.html" type="button">Add</button>
@@ -23,7 +23,9 @@
         </div>
         <div class="formContainer-modal">
             <div class="modal-content">
+                <div class="close">+</div>
                 <form id="bookForm">
+                    <h3>Add Book</h3>
                     <label for="booktitle">Book Title:</label>
                     <input type="text" id="booktitle" name="booktitle">
                     <label for="author">Author:</label>
