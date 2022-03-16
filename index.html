@@ -23,9 +23,12 @@
         </div>
         <div class="formContainer-modal">
             <div class="modal-content">
-                <div class="close">+</div>
+                <div class="modal-header">
+                    <h3 class="bookHeader">Add Book</h3>
+                    <h1 class="close">+</h1>
+                </div>
                 <form id="bookForm">
-                    <h3>Add Book</h3>
+                   
                     <label for="booktitle">Book Title:</label>
                     <input type="text" id="booktitle" name="booktitle">
                     <label for="author">Author:</label>
@@ -34,12 +37,14 @@
                     <input type="number" id="pages" name="pages">
                     <div>
                         <label for="Read">Have you read:</label>
-                        <input type="radio" id="Yes" name="Read" value="Yes">
+                        
                         <label for="Yes">Yes</label>
-                        <input type="radio" id="No" name="Read" value="No">
+                        <input type="radio" id="Yes" name="Read" value="Yes">
+                        
                         <label for="No">No</label>
+                        <input type="radio" id="No" name="Read" value="No">
                     </div>  
-                    <input type="submit" value="Submit">
+                    <input id="submit" type="submit" value="Submit">
                 </form>
             </div>
         </div>

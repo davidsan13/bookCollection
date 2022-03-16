@@ -122,6 +122,7 @@ form {
     justify-content: center;
     align-items: center;
     
+    
 }
 
 .modal-content {
@@ -134,7 +135,18 @@ form {
     flex-direction: column;
     position: relative;
     padding-bottom: 40px;
+    border-radius: 6px;
+    box-shadow: 0 12px 13px rgba(0,0,0,0.16), 0 12px 13px rgba(0,0,0,0.16);
     
+}
+
+form > #submit {
+    background: linear-gradient(to bottom right, #6452E9, #639FF9);
+    color:#ffffff;
+   
+    border:none;
+    
+    box-shadow: 0 13px 26px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.16);
 }
 h3 {
     margin: 0;
@@ -142,11 +154,29 @@ h3 {
 }
 
 .close {
-    align-self: flex-end;
+    margin: 0;
+    align-self: center;
     padding-right: 15px;
+    padding-top: 10px;
     font-size: 30px;
     transform: rotate(45deg);
     font-weight: bold;
-    cursor: default;
+    cursor: default; 
     
+}
+
+.bookHeader {
+    align-self: center;
+}
+
+.modal-header {
+    display:flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items:center;
+    gap: 170px;
+    background: linear-gradient(to bottom right, #6452E9, #639FF9);
+    margin-bottom: 45px;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 12px 13px rgba(0,0,0,0.16), 0 12px 13px rgba(0,0,0,0.16);
 }
