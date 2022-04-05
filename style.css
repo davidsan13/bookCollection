@@ -27,12 +27,12 @@ html {
 
 #table {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, minmax(300px,1fr));
     height: 70%;;
-    width: 500px;
+    gap: 10px;
     margin:0;
-    justify-items: center;
-    align-items: center;
+    
+    
     
     
 }
@@ -48,23 +48,24 @@ li {
     font-family: roboto;
     font-weight: 300px;
     word-break: break-all;
+    ;
 }
 ul {
     height:auto;
-    width: 95px;
+    width: 200px;
     display:flex;
     margin:0;
     padding: 0;
     list-style: none;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 9px;
     
     
 }
 .bookContainer {
-    width: 150px;
-    height: 230px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items:center;
@@ -78,6 +79,8 @@ ul {
 .btnCon {
     display:flex;
     gap: 20px;
+    position: relative;
+    
 }
 .btnCon > button {
     background: linear-gradient(to bottom right, #6452E9, #639FF9);
