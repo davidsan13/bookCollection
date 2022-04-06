@@ -67,6 +67,7 @@ function displayBooks() {
         var list = document.createElement("ul");
         var btnCon = document.createElement("div");
         btnCon.classList.add("btnCon");
+        btnCon.setAttribute('data-delete', key)
         bookContainer.appendChild(list)
         bookContainer.appendChild(btnCon)
         var obj = myLibrary[key]
@@ -84,7 +85,7 @@ function displayBooks() {
             btn.classList.add("material-icons")
             if(i === 0) {
                 btn.textContent = "edit" ;
-                btn.classList.add("edit")
+                btn.classList.add("read")
             }
             else{
                 btn.textContent = "delete";
@@ -98,15 +99,9 @@ function displayBooks() {
     
         table.appendChild(bookContainer);
     }
-    deleteBtn = document.querySelectorAll('.material-icons.delete')
-    deleteBtn.forEach(function(button) {
-        button.addEventListener('click', function() {
-            const index = this.dataset.delete;
-            myLibrary.splice(index, 1);
-            resetBookGrid();
-            displayBooks()
-        })
-    })
+    removeBook()
+    read()
+    
 }
 
 displayBooks();
@@ -121,6 +116,18 @@ function addBook() {
     resetBookGrid();
     displayBooks();
 }
+
+function read() {
+    readBtn = document.querySelectorAll('.material-icons.read')
+    readBtn.forEach(function(button) {
+        button.addEventListener('click', function() {
+            index = this.parentNode.dataset.delete
+            readValue = myLibrary[index].read
+            console.log(readValue)
+        })
+    })
+}
+
 
 // Modal 
 function getBookFormInput() {
@@ -138,7 +145,15 @@ function getBookFormInput() {
 }
 
 function removeBook() {
-    
+    deleteBtn = document.querySelectorAll('.material-icons.delete')
+    deleteBtn.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const index = this.dataset.delete;
+            myLibrary.splice(index, 1);
+            resetBookGrid();
+            displayBooks()
+        })
+    })
 }
 
 
