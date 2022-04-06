@@ -63,6 +63,7 @@ function displayBooks() {
     for (var key in myLibrary) {
         var bookContainer = document.createElement("div");
         bookContainer.classList.add("bookContainer");
+        bookContainer.setAttribute('data', key)
         var list = document.createElement("ul");
         var btnCon = document.createElement("div");
         btnCon.classList.add("btnCon");
@@ -83,9 +84,12 @@ function displayBooks() {
             btn.classList.add("material-icons")
             if(i === 0) {
                 btn.textContent = "edit" ;
+                btn.classList.add("edit")
             }
             else{
                 btn.textContent = "delete";
+                btn.classList.add("delete")
+                btn.setAttribute('data-delete', key)
             }
             
             btnCon.appendChild(btn);
@@ -94,6 +98,15 @@ function displayBooks() {
     
         table.appendChild(bookContainer);
     }
+    deleteBtn = document.querySelectorAll('.material-icons.delete')
+    deleteBtn.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const index = this.dataset.delete;
+            myLibrary.splice(index, 1);
+            resetBookGrid();
+            displayBooks()
+        })
+    })
 }
 
 displayBooks();
@@ -109,7 +122,6 @@ function addBook() {
     displayBooks();
 }
 
-form = document.forms
 // Modal 
 function getBookFormInput() {
     const title = document.getElementById('booktitle').value;
@@ -125,11 +137,19 @@ function getBookFormInput() {
     
 }
 
+function removeBook() {
+    
+}
+
+
+
+
+
 function closeModal(){
     document.querySelector('.formContainer-modal').style.display ='none';
 }
 
-document.getElementById('submit').addEventListener('click',function(e) {
+document.getElementById('submit').addEventListener('click', function(e) {
     e.preventDefault();
     addBook()
     closeModal()
