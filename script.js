@@ -98,21 +98,41 @@ function displayBooks() {
 
 displayBooks();
 
+function resetBookGrid() {
+    table.innerHTML = '';
+}
 function addBook() {
-   
+    const book = getBookFormInput();
+    console.log("Hello")
+    myLibrary.push(book);
+    resetBookGrid();
+    displayBooks();
 }
 
 form = document.forms
 // Modal 
 function getBookFormInput() {
-    document.getElementById('title').value;
-    document.getElementById('title').value;
-
+    const title = document.getElementById('booktitle').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const read = document.getElementsByName('read');
+    for(i = 0; i < read.length; i++) {
+        if(read[i].checked) {
+            var readValue = read[i].value;
+        }
+    }
+    return new Book(title,author,pages,readValue)
+    
 }
-document.getElementById('submit').addEventListener('click', function() {
-    const book3 = new Book("sadfit","asdf","sdf", "no");
-    myLibrary.push(book3);
-    return false;
+
+function closeModal(){
+    document.querySelector('.formContainer-modal').style.display ='none';
+}
+
+document.getElementById('submit').addEventListener('click',function(e) {
+    e.preventDefault();
+    addBook()
+    closeModal()
 })
 
 
