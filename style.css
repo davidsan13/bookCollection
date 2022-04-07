@@ -21,7 +21,7 @@ html {
     flex-direction:column;
     justify-content: flex-start;
     align-items: center;
-    gap: 50px;
+    gap: 25px;
     height: 100%;
 }
 
@@ -77,19 +77,20 @@ ul {
 
 .btnCon {
     display:flex;
-    flex-direction: column;
-    gap: 20px;
-    position: relative;
+    
+    gap: 10px;
+    
     justify-content: center;
     align-items: center;
-    max-width: 50%;
+    max-width: 60%;
     overflow: hidden;
-    width: 85px;
+    width: 100%;
 }
 .btnCon > button {
     background: linear-gradient(to bottom right, #6452E9, #639FF9);
     color:#ffffff;
     width: 100%;
+    height: 100%;
     border-radius: 5%;
     border:none;
     gap: 100px;

@@ -83,18 +83,16 @@ function displayBooks() {
         for(let i = 0; i < 2; i++) {
             var btn = document.createElement("button");
             
-            btn.classList.add("fas")
+            
             if(i === 0) {
-                btn.classList.add("fa-edit")
+                btn.classList.add("readBtn")
                 btn.textContent = 'Read';
                 
                 
             }
             else{
-                btn.classList.add("fa-trash")
-                btn.textContent = "Delete";
-                
-                btn.setAttribute('data-delete', key)
+                btn.classList.add("removeBtn")
+                btn.textContent = 'Remove';
             }
             
             btnCon.appendChild(btn);
@@ -115,14 +113,13 @@ function resetBookGrid() {
 }
 function addBook() {
     const book = getBookFormInput();
-    console.log("Hello")
     myLibrary.push(book);
     resetBookGrid();
     displayBooks();
 }
 
 function read() {
-    readBtn = document.querySelectorAll('.fas.fa-edit')
+    readBtn = document.querySelectorAll('.readBtn')
     readBtn.forEach(function(button) {
         button.addEventListener('click', function() {
             index = this.parentNode.dataset.delete
@@ -157,10 +154,10 @@ function getBookFormInput() {
 }
 
 function removeBook() {
-    deleteBtn = document.querySelectorAll('.fas.fa-trash')
+    deleteBtn = document.querySelectorAll('.removeBtn')
     deleteBtn.forEach(function(button) {
         button.addEventListener('click', function() {
-            const index = this.dataset.delete;
+            const index = this.parentNode.dataset.delete;
             myLibrary.splice(index, 1);
             resetBookGrid();
             displayBooks()
