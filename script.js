@@ -180,7 +180,7 @@ document.getElementById('submit').addEventListener('click', function(e) {
 })
 
 
-document.getElementById('bookBtn').addEventListener('click', function() {
+document.getElementById('addBtn').addEventListener('click', function() {
     document.querySelector('.formContainer-modal').style.display ='flex';
 })
        
