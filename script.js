@@ -11,13 +11,13 @@ function Book(title, author, pages, read) {
     // }
 }
 
-const habit = new Book("7Habitasdfasdfasdf sadf asdf saf asf sfsdfasdf sadf asdf asdf asdf ","asdf","23", "no");
-const book1 = new Book("sadfit","asdf","sdf", "no");
+const habit = new Book("7Habitasdfasdfasdf sadf asdf saf asf sfsdfasdf sadf asdf asdf asdf ","asdf","23", "Yes");
+const book1 = new Book("sadfit","asdf","sdf", "No");
 myLibrary.push(habit)
 myLibrary.push(book1)
 
-const habit1 = new Book("7Habit","asdf","23", "no");
-const book11 = new Book("sadfit","asdf","sdf", "no");
+const habit1 = new Book("7Habit","asdf","23", "No");
+const book11 = new Book("sadfit","asdf","sdf", "No");
 myLibrary.push(habit1)
 myLibrary.push(book11)
 // habit.info();
@@ -82,14 +82,18 @@ function displayBooks() {
         }
         for(let i = 0; i < 2; i++) {
             var btn = document.createElement("button");
-            btn.classList.add("material-icons")
+            
+            btn.classList.add("fas")
             if(i === 0) {
-                btn.textContent = "edit" ;
-                btn.classList.add("read")
+                btn.classList.add("fa-edit")
+                btn.textContent = 'Read';
+                
+                
             }
             else{
-                btn.textContent = "delete";
-                btn.classList.add("delete")
+                btn.classList.add("fa-trash")
+                btn.textContent = "Delete";
+                
                 btn.setAttribute('data-delete', key)
             }
             
@@ -118,12 +122,20 @@ function addBook() {
 }
 
 function read() {
-    readBtn = document.querySelectorAll('.material-icons.read')
+    readBtn = document.querySelectorAll('.fas.fa-edit')
     readBtn.forEach(function(button) {
         button.addEventListener('click', function() {
             index = this.parentNode.dataset.delete
             readValue = myLibrary[index].read
             console.log(readValue)
+            if (readValue == "No") {
+                myLibrary[index].read = "Yes"
+            } else {
+                myLibrary[index].read = "No"
+            }
+            console.log(readValue)
+            resetBookGrid()
+            displayBooks()
         })
     })
 }
@@ -145,7 +157,7 @@ function getBookFormInput() {
 }
 
 function removeBook() {
-    deleteBtn = document.querySelectorAll('.material-icons.delete')
+    deleteBtn = document.querySelectorAll('.fas.fa-trash')
     deleteBtn.forEach(function(button) {
         button.addEventListener('click', function() {
             const index = this.dataset.delete;
