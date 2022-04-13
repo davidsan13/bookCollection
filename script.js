@@ -6,21 +6,11 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
 
-    // this.info = function() {
-    //     console.log( `${this.title} by ${this.author}, ${this.pages}, ${this.read} `)
-    // }
 }
 
-const habit = new Book("7Habitasdfasdfasdf sadf asdf saf asf sfsdfasdf sadf asdf asdf asdf ","asdf","23", "Yes");
-const book1 = new Book("sadfit","asdf","sdf", "No");
-myLibrary.push(habit)
-myLibrary.push(book1)
 
-const habit1 = new Book("7Habit","asdf","23", "No");
-const book11 = new Book("sadfit","asdf","sdf", "No");
-myLibrary.push(habit1)
-myLibrary.push(book11)
 // habit.info();
+// Might Delete
 function addBookLibrary() {
     title= prompt("title")
     author = prompt("author")
@@ -38,6 +28,7 @@ const table = document.getElementById("table");
 
 const propOwn = Object.getOwnPropertyNames(Book);
 
+// Might Delete
 function displayBooks() {
     for (var key in myLibrary) {
         var bookContainer = document.createElement("div");
@@ -56,8 +47,7 @@ function displayBooks() {
             
             listItem.textContent = `${item[0].toUpperCase()}${item.slice(1)}: ${obj[item]} `;
             list.appendChild(listItem);
-            
-            console.log(obj[item])
+    
         }
         for(let i = 0; i < 2; i++) {
             var btn = document.createElement("button");
@@ -72,6 +62,7 @@ function displayBooks() {
             else{
                 btn.classList.add("removeBtn")
                 btn.textContent = 'Remove';
+                
             }
             
             btnCon.appendChild(btn);
@@ -80,16 +71,15 @@ function displayBooks() {
     
         table.appendChild(bookContainer);
     }
-    removeBook()
-    read()
+    
+    
     
 }
 
-displayBooks();
 
-function resetBookGrid() {
-    table.innerHTML = '';
-}
+
+
+//might delete
 function addBook(book) {
     // const book = getBookFormInput();
     myLibrary.push(book);
@@ -97,21 +87,29 @@ function addBook(book) {
     displayBooks();
 }
 
+//---------------------------------------------------------------
+function resetBookGrid() {
+    table.innerHTML = '';
+}
+
 function read() {
     readBtn = document.querySelectorAll('.readBtn')
     readBtn.forEach(function(button) {
         button.addEventListener('click', function() {
-            index = this.parentNode.dataset.delete
-            readValue = myLibrary[index].read
+            const index = this.parentNode.dataset.delete
+            bookss = JSON.parse(localStorage.getItem(index))
+            readValue = book.read
             console.log(readValue)
             if (readValue == "No") {
-                myLibrary[index].read = "Yes"
+                bookss.read = "Yes"
             } else {
-                myLibrary[index].read = "No"
+                bookss.read = "No"
             }
-            console.log(readValue)
-            resetBookGrid()
-            displayBooks()
+            console.log(bookss)
+            localStorage.setItem(index,JSON.stringify(bookss))
+            
+            
+            
         })
     })
 }
@@ -119,22 +117,21 @@ function read() {
 //localStorage
 
 function localAdd() {
+    resetBookGrid()
     for(let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        console.log(key)
         if(key == null){
             return
         }
         book = JSON.parse(localStorage.getItem(key));
         localDisplay(key, book)
-        
-        console.log(`${key}: ${localStorage.getItem(key)}`);
     }
 }
-localAdd()
+
+localAdd();
 
 function localDisplay(key, book) {
-
+    
     var bookContainer = document.createElement("div");
     bookContainer.classList.add("bookContainer");
     bookContainer.setAttribute('data', key)
@@ -151,8 +148,7 @@ function localDisplay(key, book) {
         
         listItem.textContent = `${item[0].toUpperCase()}${item.slice(1)}: ${obj[item]} `;
         list.appendChild(listItem);
-        
-        console.log(obj[item])
+
     }
     for(let i = 0; i < 2; i++) {
         var btn = document.createElement("button");
@@ -175,13 +171,15 @@ function localDisplay(key, book) {
 
     table.appendChild(bookContainer);
 
-    removeBook()
-    read()
+    
 }
 
 bookCount = 0;
 function Storage() {
     book = getBookFormInput();
+    while(localStorage.getItem(bookCount)) {
+        bookCount++;
+    }
     localStorage.setItem(bookCount, JSON.stringify(book));
     bookCount +=1;
     
@@ -205,21 +203,20 @@ function getBookFormInput() {
 
 function removeBook() {
     deleteBtn = document.querySelectorAll('.removeBtn')
+ 
     deleteBtn.forEach(function(button) {
         button.addEventListener('click', function() {
+            
             const index = this.parentNode.dataset.delete;
             localStorage.removeItem(index);
-            // myLibrary.splice(index, 1);
-            resetBookGrid();
-            localAdd()
-            
+            const el = document.querySelector('[data=' + CSS.escape(index) + "]");
+            el.remove();
             
         })
     })
 }
 
-
-
+removeBook()
 
 
 function closeModal(){
