@@ -35,28 +35,7 @@ function addBookLibrary() {
 
 const table = document.getElementById("table");
 
-// myLibrary.forEach(function(items) {
-//     var row = document.createElement("tr");
-// //     items.forEach(function(item) {
-// //         var cell = document.createElement("td");
-// //         cell.textContent = item;
-// //         row.appendChild(cell);
-// //     });
-//     row.textContent = items.title
-//     tbody.appendChild(row);
-// })
 
-// for(let i = 0; i < propOwn.length; i++ ) {
-//     var row = document.createElement("tr");
-//     row.textContent = 
-//     tbody.appendChild(row);
-// }
-// myLibrary.forEach(function(items) {
-//     console.log(items)
-//     console.log(items.author)
-//     console.log(items.pages)
-//     console.log(items.read) 
-// });
 const propOwn = Object.getOwnPropertyNames(Book);
 
 function displayBooks() {
@@ -111,8 +90,8 @@ displayBooks();
 function resetBookGrid() {
     table.innerHTML = '';
 }
-function addBook() {
-    const book = getBookFormInput();
+function addBook(book) {
+    // const book = getBookFormInput();
     myLibrary.push(book);
     resetBookGrid();
     displayBooks();
@@ -137,6 +116,77 @@ function read() {
     })
 }
 
+//localStorage
+
+function localAdd() {
+    for(let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        console.log(key)
+        if(key == null){
+            return
+        }
+        book = JSON.parse(localStorage.getItem(key));
+        localDisplay(key, book)
+        
+        console.log(`${key}: ${localStorage.getItem(key)}`);
+    }
+}
+localAdd()
+
+function localDisplay(key, book) {
+
+    var bookContainer = document.createElement("div");
+    bookContainer.classList.add("bookContainer");
+    bookContainer.setAttribute('data', key)
+    var list = document.createElement("ul");
+    var btnCon = document.createElement("div");
+    btnCon.classList.add("btnCon");
+    btnCon.setAttribute('data-delete', key)
+    bookContainer.appendChild(list)
+    bookContainer.appendChild(btnCon)
+    var obj = book
+    for (var item in obj) {
+        var listItem = document.createElement("li");
+        
+        
+        listItem.textContent = `${item[0].toUpperCase()}${item.slice(1)}: ${obj[item]} `;
+        list.appendChild(listItem);
+        
+        console.log(obj[item])
+    }
+    for(let i = 0; i < 2; i++) {
+        var btn = document.createElement("button");
+        
+        
+        if(i === 0) {
+            btn.classList.add("readBtn")
+            btn.textContent = 'Read';
+            
+            
+        }
+        else{
+            btn.classList.add("removeBtn")
+            btn.textContent = 'Remove';
+        }
+        
+        btnCon.appendChild(btn);
+    }
+    
+
+    table.appendChild(bookContainer);
+
+    removeBook()
+    read()
+}
+
+bookCount = 0;
+function Storage() {
+    book = getBookFormInput();
+    localStorage.setItem(bookCount, JSON.stringify(book));
+    bookCount +=1;
+    
+
+}
 
 // Modal 
 function getBookFormInput() {
@@ -158,9 +208,12 @@ function removeBook() {
     deleteBtn.forEach(function(button) {
         button.addEventListener('click', function() {
             const index = this.parentNode.dataset.delete;
-            myLibrary.splice(index, 1);
+            localStorage.removeItem(index);
+            // myLibrary.splice(index, 1);
             resetBookGrid();
-            displayBooks()
+            localAdd()
+            
+            
         })
     })
 }
@@ -175,7 +228,9 @@ function closeModal(){
 
 document.getElementById('submit').addEventListener('click', function(e) {
     e.preventDefault();
-    addBook()
+    Storage()
+    localAdd()
+    // addBook()
     closeModal()
 })
 
