@@ -1,4 +1,4 @@
-let myLibrary = [];
+
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -8,12 +8,7 @@ function Book(title, author, pages, read) {
 
 }
 
-
-// habit.info();
-
-
-
-
+bookCount = 0;
 const table = document.getElementById("table");
 
 
@@ -90,7 +85,7 @@ function localDisplay(key, book) {
     
 }
 
-bookCount = 0;
+
 function Storage() {
     book = getBookFormInput();
     while(localStorage.getItem(bookCount)) {

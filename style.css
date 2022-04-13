@@ -55,7 +55,7 @@ html {
 #table {
     display: grid;
     grid-template-columns: repeat(3, minmax(300px,3fr));
-    gap: 5px;
+    gap: 10px;
     margin:0;
     
     
@@ -96,10 +96,21 @@ ul {
     justify-content: center;
     align-items:center;
     flex-direction:column;
-    gap: 30px;
+    gap: 45px;
     background: #31394D;
-    border-radius: 6px;
-    box-shadow: 0 12px 13px rgba(0,0,0,0.16), 0 12px 13px rgba(0,0,0,0.16);
+    /* box-shadow: 0 12px 13px rgba(0,0,0,0.16), 0 12px 13px rgba(0,0,0,0.16); */
+
+
+    border-radius: 5px;
+    transition: all .4s ease-in-out;
+    box-shadow: 1px 2px 15px rgba(0, 0, 0, .1);
+}
+
+.bookContainer:hover{
+    cursor: default;
+    transform: translateY(-5px);
+    
+    box-shadow: 1px 4px 15px rgba(0, 0, 0, .32)
 }
 
 .btnCon {
